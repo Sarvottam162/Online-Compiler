@@ -345,7 +345,7 @@ async function executeCode(code, langId, stdin) {
     headers: {
       "Content-Type": "application/json",
       "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
-      "X-RapidAPI-Key": "DEMO",   // replace with your RapidAPI key
+      "X-RapidAPI-Key": "166addcbc7msh5bf285b68851b84p12f0adjsn103d6e2cf462",   // replace with your RapidAPI key
     },
     body: JSON.stringify({
       source_code: btoa(unescape(encodeURIComponent(code))),
@@ -451,7 +451,7 @@ function simulateRun(code, langId, stdin) {
           const matches = [...code.matchAll(/"([^"\\n]+)\\?n?"/g)];
           output = matches.map(m => m[1]).join("\n");
         } else {
-          output = "✓ Code executed successfully (demo mode).\n\nNote: For full execution, configure your Judge0 RapidAPI key in app.js.";
+          output = "✓ Code executed successfully (166addcbc7msh5bf285b68851b84p12f0adjsn103d6e2cf462 mode).\n\nNote: For full execution, configure your Judge0 RapidAPI key in app.js.";
         }
 
         resolve({
