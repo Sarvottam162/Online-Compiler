@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Compiler – Code. Run. Create.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ── TOP NAV ── -->
+<header class="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">⌥</span>
+    <span class="brand-name">OnlineCompiler</span>
+  </div>
+  <nav class="nav-links">
+    <a href="#" class="nav-link active">Editor</a>
+    <a href="#" class="nav-link">Examples</a>
+    <a href="#" class="nav-link">Docs</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="btn-ghost" id="themeToggle" title="Toggle theme">☽</button>
+    <button class="btn-primary" id="shareBtn">Share</button>
+  </div>
+</header>
+
+<!-- ── HERO STRIP ── -->
+<div class="hero-strip">
+  <p>Write, run, and share code in <strong>10+ languages</strong> — no setup needed.</p>
+</div>
+
+<!-- ── MAIN LAYOUT ── -->
+<main class="workspace">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <p class="sidebar-label">Language</p>
+      <div class="lang-grid" id="langGrid">
+        <button class="lang-btn active" data-lang="python" data-icon="🐍">Python</button>
+        <button class="lang-btn" data-lang="javascript" data-icon="⚡">JavaScript</button>
+        <button class="lang-btn" data-lang="java" data-icon="☕">Java</button>
+        <button class="lang-btn" data-lang="c" data-icon="⚙">C</button>
+        <button class="lang-btn" data-lang="cpp" data-icon="🔧">C++</button>
+        <button class="lang-btn" data-lang="csharp" data-icon="#">C#</button>
+        <button class="lang-btn" data-lang="go" data-icon="🐹">Go</button>
+        <button class="lang-btn" data-lang="rust" data-icon="🦀">Rust</button>
+        <button class="lang-btn" data-lang="ruby" data-icon="💎">Ruby</button>
+        <button class="lang-btn" data-lang="php" data-icon="🐘">PHP</button>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">Examples</p>
+      <div class="example-list" id="exampleList"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <p class="sidebar-label">Settings</p>
+      <div class="settings-row">
+        <label>Font size</label>
+        <input type="range" min="12" max="24" value="14" id="fontSizeRange" />
+        <span id="fontSizeVal">14px</span>
+      </div>
+      <div class="settings-row">
+        <label>Tab size</label>
+        <select id="tabSizeSelect">
+          <option value="2">2 spaces</option>
+          <option value="4" selected>4 spaces</option>
+        </select>
+      </div>
+    </div>
+  </aside>
+
+  <!-- EDITOR + OUTPUT -->
+  <section class="editor-area">
+
+    <!-- EDITOR PANEL -->
+    <div class="panel editor-panel">
+      <div class="panel-header">
+        <div class="panel-header-left">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="filename" id="filename">main.py</span>
+        </div>
+        <div class="panel-header-right">
+          <button class="icon-btn" id="copyBtn" title="Copy code">⎘</button>
+          <button class="icon-btn" id="clearBtn" title="Clear code">✕</button>
+          <button class="run-btn" id="runBtn">
+            <span class="run-icon">▶</span> Run
+          </button>
+        </div>
+      </div>
+
+      <div class="editor-wrapper">
+        <div class="line-numbers" id="lineNumbers"></div>
+        <textarea id="codeEditor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="panel-divider" id="divider"></div>
+
+    <!-- OUTPUT PANEL -->
+    <div class="panel output-panel">
+      <div class="panel-header">
+        <div class="panel-header-left">
+          <span class="output-dot"></span>
+          <span>Output</span>
+          <span class="badge" id="statusBadge">Ready</span>
+        </div>
+        <div class="panel-header-right">
+          <button class="icon-btn" id="clearOutputBtn" title="Clear output">✕</button>
+        </div>
+      </div>
+
+      <div class="stdin-bar" id="stdinBar">
+        <label for="stdinInput">stdin:</label>
+        <input type="text" id="stdinInput" placeholder="Enter input for your program…" />
+      </div>
+
+      <div class="output-wrapper">
+        <pre id="outputArea"><span class="output-placeholder">Your output will appear here after you click Run ▶</span></pre>
+      </div>
+
+      <div class="output-footer" id="outputFooter" style="display:none">
+        <span id="execTime"></span>
+        <span id="exitCode"></span>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
